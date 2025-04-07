@@ -32,3 +32,9 @@ def telegram_callback():
     bot.answer_callback_query(query['id'])
     bot.send_message(chat_id=CHAT_ID, text=f"{action} clicked for {stock}")
     return "Action received"
+    @app.route("/callback", methods=["GET"])
+def callback():
+    code = request.args.get('code')
+    state = request.args.get('state')
+    return f"Code: {code}, State: {state}"
+
